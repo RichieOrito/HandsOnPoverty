@@ -10,7 +10,14 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 
+from distutils import config
 from pathlib import Path
+import cloudinary
+import cloudinary.uploader
+import cloudinary.api
+
+
+AUTH_USER_MODEL = 'changeapp.User'
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -27,7 +34,6 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-
 # Application definition
 
 INSTALLED_APPS = [
@@ -37,7 +43,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'changeapp'
+    'changeapp',
+    'cloudinary',
+    'tinymce',
+    'bootstrap5',
 ]
 
 MIDDLEWARE = [
@@ -76,8 +85,10 @@ WSGI_APPLICATION = 'changetime.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'changetime',
+        'USER': 'moringa',
+        'PASSWORD':'R0707318659@!',
     }
 }
 
@@ -106,7 +117,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Africa/Nairobi'
 
 USE_I18N = True
 
@@ -118,6 +129,12 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
+
+cloudinary.config( 
+  cloud_name = "rue", 
+  api_key = "576767863613741", 
+  api_secret = "F6qGGBgn3KD2WEl12oo8ud1Ld4w" 
+)
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
