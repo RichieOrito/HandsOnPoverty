@@ -1,0 +1,249 @@
+@import url('https://fonts.googleapis.com/css2?family=Acme&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Acme', sans-serif;
+}
+
+/* Login */
+.box-form{
+    margin: 0 auto;
+    width: 100%;
+    display: flex;
+    flex: 1 1 100%;
+    align-items: stretch;
+    justify-content: space-between;
+    background-color: #FDFFA9;
+    height: 100vh; 
+}
+@media (max-width: 980px){
+    .box-form {
+        flex-flow: wrap;
+        text-align: center;
+        align-items: center;
+        align-content: center;
+    }
+}
+.box-form div{
+    height: auto;
+}
+.box-form .left{
+    background-repeat: no-repeat;
+    background-image: url('/static/img/tucker-tangeman-9aAr_EFqYdc-unsplash.jpg');
+    /* background-image: url('/static/img/original.jpg'); */
+    width: 50%;
+    background-size: 700px 635px;
+    
+}
+
+.box-form .left .overlay{
+    width: 100%;
+    height: 100%;
+    background: #FDFFA9;
+    /* background-color: transparent; */
+    background-color: rgba(253, 255, 169, 0.3);
+}
+.box-form .right{
+    padding: 40px;
+    width: 50%;
+    
+    
+}
+@media (max-width: 980px){
+    .box-form .right {
+        width: 100%;
+    }
+}
+.squeeze{
+    padding: 30px;
+    width: 70%;
+    margin-right: auto;
+    margin-left: auto;
+    
+}
+.box-form .right p {
+    font-size: 16px;
+    color: #2D3748 ;
+    font-weight: 400;
+}
+.box-form .right h5 {
+    font-size: 23px;
+    color: #1A202C ;
+}
+.box-form .right .form input{
+    width: 100%;
+    padding: 13px;
+    border-radius: 5px;
+    border: 1px solid #00C897; 
+    
+}
+.box-form .right .form .remember-me{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 22px;
+}
+.box-form .right .form .remember-me input{
+    margin: 0;
+    width: auto;
+}
+
+a{
+    text-decoration: none;
+    color: #2C5282;
+}
+.box-form .right .form button{
+    display: grid;
+    justify-content: center;
+    margin-left: 0;
+    margin-right: 0;
+    width: 100%;
+    padding: 13px;
+    border-radius: 5px;
+}
+.box-form .right .form .login button{
+    background-color: #019267;
+    color: #fff;
+    margin-top: 18px;
+    margin-bottom: 8px;
+    border: none;
+}
+
+.box-form .right .form .login-google button{
+    background-color: #2D3748;
+    color: #fff;
+    border: none;
+}
+.box-form .right .form .input_field{
+    margin-bottom: 14px;
+    margin-top: 15px;
+}
+.box-form .right .form .input_field p{
+    left: 0%;
+    margin-bottom: 6px;
+    color: #4A5568;
+    font-size: 16px;
+}
+.box-form .right .form .dont p{
+   margin-top: 150px;
+   text-align: center;
+   margin-top: 70px;
+}
+.box-form .right .form .login-google button i{
+    
+    color: #fff;
+}
+
+/* Registration form */
+.box-form2{
+    margin: 0 auto;
+    width: 100%;
+    display: flex;
+    flex: 1 1 100%;
+    align-items: stretch;
+    justify-content: space-between;
+    background-color: #FDFFA9;
+    height: 100vh;
+    font-family: 'Roboto';
+}
+@media (max-width: 980px){
+    .box-form2 {
+        flex-flow: wrap;
+        text-align: center;
+        align-items: center;
+        align-content: center;
+    }
+}
+.box-form2 div{
+    height: auto;
+}
+.box-form2 .right{
+    background-repeat: no-repeat;
+    background-image: url('/static/img/tucker-tangeman-9aAr_EFqYdc-unsplash.jpg');
+    width: 50%;
+    background-size: 700px 635px
+}
+.box-form2 .right .overlay{
+    width: 100%;
+    height: 100%;
+    background: #FDFFA9;
+    /* background-color: transparent; */
+    background-color: rgba(253, 255, 169, 0.3);
+}
+.box-form2 .left{
+    padding: 40px;
+    width: 50%;
+    
+    
+}
+@media (max-width: 980px){
+    .box-form2 .left {
+        width: 100%;
+    }
+}
+.squeeze{
+    padding: 30px;
+    width: 70%;
+    margin-right: auto;
+    margin-left: auto;
+    
+}
+.box-form2 .left p {
+    font-size: 14px;
+    color: #2D3748 ;
+    font-weight: 400;
+}
+.box-form2 .left h5 {
+    font-size: 23px;
+    color: #1A202C ;
+}
+.box-form2 .left .form input{
+    width: 100%;
+    padding: 13px;
+    border-radius: 5px;
+    border: 1px solid #00C897; 
+    
+}
+
+.box-form2 .left .form button{
+    display: grid;
+    justify-content: center;
+    margin-left: 0;
+    margin-right: 0;
+    width: 100%;
+    padding: 13px;
+    border-radius: 5px;
+}
+.box-form2 .left .form .login button{
+    background-color: #019267;
+    color: #fff;
+    margin-top: 18px;
+    margin-bottom: 8px;
+    border: none;
+}
+
+.box-form2 .left .form .login-google button{
+    background-color: #2D3748;
+    color: #fff;
+    border: none;
+}
+.box-form .left .form .input_field{
+    margin-bottom: 14px;
+    margin-top: 15px;
+}
+.box-form2 .left .form .input_field p{
+    left: 0%;
+    margin-bottom: 6px;
+    color: #4A5568;
+    font-size: 16px;
+}
+.box-form2 .left .form .dont p{
+   margin-top: 150px;
+   text-align: center;
+   margin-top: 60px;
+}
+.box-form2 .left .form .login-google button i{
+    
+    color: #fff;
+}
