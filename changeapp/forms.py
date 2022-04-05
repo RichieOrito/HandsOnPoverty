@@ -21,7 +21,7 @@ class ProfileForm(forms.ModelForm):
     bio = forms.CharField(required=False)
     class Meta:
         model = User
-        fields = ('full_name', 'bio', 'contact')
+        fields = ('full_name', 'bio', 'contact', 'username')
 
 class UpdateArticlesForm(forms.ModelForm):
     class Meta:

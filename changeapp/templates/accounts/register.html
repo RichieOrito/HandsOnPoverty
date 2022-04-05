@@ -112,8 +112,8 @@
                         <div class="d-flex justify-content-center mt-3 login_container">
                             <input class="btn login_btn" type="submit" value="Register Account">
                         </div>
-
-                    </form>
+                        
+                    </form>   
                 </div>
 
                 {{form.errors}}
@@ -143,6 +143,7 @@
             form_fields[field].className += ' form-control'
         }
     </script>
+        {% bootstrap_javascript %}
 </body>
 
 </html>
