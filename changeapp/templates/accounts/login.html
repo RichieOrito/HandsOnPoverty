@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html>
     
 <head>
@@ -125,4 +125,68 @@
 	</div>
 </body>
 
+</html> -->
+{% load bootstrap5 %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<link rel="stylesheet" href="{% static 'css/style.css' %}">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
+</head>
+	<body>
+		
+		<div class="box-form">
+
+			<div class="left">
+				<div class="overlay">
+					
+				</div>
+			</div>
+
+			<div class="right">
+				<div class="squeeze">
+				<p>Welcome back</p>
+				<h5>Login to your account </h5>
+
+				<form class="form" action="" method="POST">
+					{% csrf_token %}
+					<div class="input_field">
+						<p>Email</p>
+						<input type="email" class="input" name="email" id="email" placeholder="change@email.com" required>
+					</div>
+					<div class="input_field">
+						<p>Password</p>
+						<input type="password" class="input" name="password" id="password" placeholder="*********" required>
+					</div>
+
+					
+
+					<div class="remember-me">
+						<label>
+							<input type="radio" name="item">
+							<span class="text-checkbox">Remember me</span>
+						</label>
+							<p><a href="#">forgot password?</p></a>
+					</div>
+
+					<div class="login">
+						<button type="submit">Login</button>
+					</div>
+
+					<div class="login-google">
+						<button type="submit"><i class="fab fa-google"> Or sign-in with google</i></button>
+					</div>
+					<div class="dont">
+						<p>Don't have an account? <a href="{% url 'register'%}">Sign Up</a></p>
+					</div>
+				</form>
+				</div>
+			</div>
+		</div>
+	</body>
 </html>
