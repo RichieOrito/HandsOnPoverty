@@ -45,7 +45,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'changeapp',
-    'cloudinary',
+    # 'cloudinary'
     'tinymce',
     'bootstrap5',
 ]
