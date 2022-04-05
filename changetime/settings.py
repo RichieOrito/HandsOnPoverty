@@ -10,11 +10,12 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 
-from distutils import config
+
 from pathlib import Path
-import cloudinary
-import cloudinary.uploader
-import cloudinary.api
+# import cloudinary
+# import cloudinary.uploader
+# import cloudinary.api
+import os
 
 
 AUTH_USER_MODEL = 'changeapp.User'
@@ -86,9 +87,10 @@ WSGI_APPLICATION = 'changetime.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'changetime',
-        'USER': 'moringa',
-        'PASSWORD':'R0707318659@!',
+        'NAME': 'moringa',
+        'USER': 'postgres',
+        'PASSWORD':'xoxo',
+        'HOST': 'localhost',
     }
 }
 
@@ -127,15 +129,18 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, "static"),
+]
 
 
-cloudinary.config( 
-  cloud_name = "rue", 
-  api_key = "576767863613741", 
-  api_secret = "F6qGGBgn3KD2WEl12oo8ud1Ld4w" ,
-  secure = True,
-)
+# cloudinary.config( 
+#   cloud_name = "rue", 
+#   api_key = "576767863613741", 
+#   api_secret = "F6qGGBgn3KD2WEl12oo8ud1Ld4w" 
+# )
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
