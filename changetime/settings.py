@@ -12,9 +12,9 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 
 
 from pathlib import Path
-# import cloudinary
-# import cloudinary.uploader
-# import cloudinary.api
+import cloudinary
+import cloudinary.uploader
+import cloudinary.api
 import os
 
 
@@ -45,7 +45,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'changeapp',
-    # 'cloudinary'
+    'cloudinary',
     'tinymce',
     'bootstrap5',
 ]
@@ -135,11 +135,11 @@ STATICFILES_DIRS = [
 ]
 
 
-# cloudinary.config( 
-#   cloud_name = "rue", 
-#   api_key = "576767863613741", 
-#   api_secret = "F6qGGBgn3KD2WEl12oo8ud1Ld4w" 
-# )
+cloudinary.config( 
+  cloud_name = "rue", 
+  api_key = "576767863613741", 
+  api_secret = "F6qGGBgn3KD2WEl12oo8ud1Ld4w" 
+)
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
