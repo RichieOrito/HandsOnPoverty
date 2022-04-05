@@ -45,7 +45,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'changeapp',
-    'cloudinary'
+    'cloudinary',
     'tinymce',
     'bootstrap5',
     'django.contrib.sites',
@@ -105,10 +105,9 @@ WSGI_APPLICATION = 'changetime.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'moringa',
-        'USER': 'postgres',
-        'PASSWORD':'xoxo',
-        'HOST': 'localhost',
+        'NAME': 'changetime',
+        'USER': 'moringa',
+        'PASSWORD':'R0707318659@!',
     }
 }
 
