@@ -143,13 +143,14 @@
             form_fields[field].className += ' form-control'
         }
     </script>
-        {% bootstrap_javascript %}
+        
 </body>
 
 </html> -->
 
 {% load bootstrap5 %}
 {% load static %}
+{% load socialaccount %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -202,7 +203,7 @@
 					</div>
 
 					<div class="login-google">
-						<button type="submit"><i class="fab fa-google"> Or sign-in with google</i></button>
+						<a class="btn" href="{% provider_login_url 'google' %}"><i class="fab fa-google"> Or sign-in with google</i></a>
 					</div>
                     {{form.errors}}
 					<div class="dont">
