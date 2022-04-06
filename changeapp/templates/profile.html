@@ -16,6 +16,7 @@
                     <p>@{{user.username}}</p>
                     <p>Email: {{user.email}}</p>
                     <p>Joined on: {{user.date_joined|date}}</p>
+                    <a href="{% url 'login' %}" class="nav-link">Logout</a>
             </div>
      </div>
     <div>
