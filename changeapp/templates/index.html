@@ -26,4 +26,27 @@
             <h2>Share your Story With Us.Help save a Human</h2>
         </div>
     </section>
+
+    {% for article in articles %}
+    <h2>{{article.title}}</h2>
+    <img src="{{article.image.url}}" alt="">
+    <a href="{% url 'single_article' article.id %}">View article</a>
+    {% endfor %}
+
+    <!-- Donation form -->
+    <form action="{% url 'lipa_na_mpesa' %}">
+        <div class="mb-3">
+          <label for="Name" class="form-label">Name</label>
+          <input type="text" class="form-control" placeholder="Name">
+        </div>
+        <div class="mb-3">
+            <label for="Amount" class="form-label">Amount</label>
+            <input type="number" class="form-control"  name="amount" placeholder="Enter amount to donate">
+          </div>
+        <div class="mb-3">
+          <label for="Phone number" class="form-label">Phone number</label>
+          <input type="number" class="form-control"  name="phone_number" placeholder="Enter phone number in fromat 254712345678">
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
 {%endblock%}
