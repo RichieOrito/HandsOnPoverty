@@ -1,5 +1,6 @@
 {% load bootstrap5 %}
 {% load static %}
+{% load socialaccount %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -52,7 +53,7 @@
 					</div>
 
 					<div class="login-google">
-						<button type="submit"><i class="fab fa-google"> Or sign-in with google</i></button>
+						<a class="btn" href="{% provider_login_url 'google' %}"><i class="fab fa-google"> Or sign-in with google</i></a>
 					</div>
                     
 					<div class="dont">

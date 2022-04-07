@@ -10,12 +10,12 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 
-
 from pathlib import Path
 import cloudinary
 import cloudinary.uploader
 import cloudinary.api
 import os
+from distutils import config
 
 
 AUTH_USER_MODEL = 'changeapp.User'
@@ -48,7 +48,25 @@ INSTALLED_APPS = [
     'cloudinary',
     'tinymce',
     'bootstrap5',
+    'django.contrib.sites',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount', 
+    'allauth.socialaccount.providers.google', #for google auth
+    'django_social_share',
 ]
+
+SOCIALACCOUNT_PROVIDERS = {
+    'google': {
+        'SCOPE': [
+            'profile',
+            'email',
+        ],
+        'AUTH_PARAMS': {
+            'access_type': 'online',
+        }
+    }
+}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -87,10 +105,9 @@ WSGI_APPLICATION = 'changetime.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'moringa',
-        'USER': 'postgres',
-        'PASSWORD':'12345',
-        'HOST': 'localhost',
+        'NAME': 'changetime',
+        'USER': 'moringa',
+        'PASSWORD':'R0707318659@!',
     }
 }
 
@@ -115,7 +132,20 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+AUTHENTICATION_BACKENDS = (
+ #used for default signin such as loggin into admin panel
+ 'django.contrib.auth.backends.ModelBackend', 
+  
+ #used for social authentications
+ 'allauth.account.auth_backends.AuthenticationBackend',
+ )
 
+SITE_ID = 2
+LOGIN_REDIRECT_URL = 'main'
+SOCIALACCOUNT_QUERY_EMAIL = True
+ACCOUNT_LOGOUT_ON_GET= True
+ACCOUNT_UNIQUE_EMAIL = True
+ACCOUNT_EMAIL_REQUIRED = True
 # Internationalization
 # https://docs.djangoproject.com/en/4.0/topics/i18n/
 
@@ -130,6 +160,7 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
+
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [
