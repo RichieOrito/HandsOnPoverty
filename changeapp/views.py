@@ -109,6 +109,7 @@ def article(request):
 
     return render(request, 'new_article.html', {"form": form})  
 
+
 @login_required()
 def single_article(request, id):
     article = Articles.get_post_by_id(id)
