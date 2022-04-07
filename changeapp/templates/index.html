@@ -1,11 +1,20 @@
 {% extends 'base.html' %}
 {% load bootstrap5 %}
+{% load static %}
+
 {% block content %}
-    <h1>The time has come</h1>
-    <a href="{% url 'profile'  user.username %}">Profile</a>
-    {% for article in articles %}
-    <h2>{{article.title}}</h2>
-    <img src="{{article.image.url}}" alt="">
-    <a href="{% url 'single_article' article.id %}">View article</a>
-    {% endfor %}
+
+    <section class="home">
+        <div class="home-text">
+            <h3><span>#</span> poverty eradication</h3>
+            <h1>stop <span>poverty</span></h1>
+            <h1>together we can</h1>
+            <button type="button">donate</button>
+        </div>
+        <div class="home-img">
+            <img
+                src="static/img/bill-wegener-7MD4DR9jbP0-unsplash.jpg"
+                alt="">
+        </div>
+    </section>
 {%endblock%}
