@@ -225,6 +225,10 @@ cite{
     text-decoration: none;
     color: #2C5282;
 }
+.login-google a{
+    text-decoration: none;
+    color: #2C5282;
+}
 .box-form .right .form button{
     display: grid;
     justify-content: center;
