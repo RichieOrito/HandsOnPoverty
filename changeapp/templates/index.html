@@ -1,8 +1,32 @@
 {% extends 'base.html' %}
 {% load bootstrap5 %}
+{% load static %}
+
 {% block content %}
-    <h1>The time has come</h1>
-    <a href="{% url 'profile'  user.username %}">Profile</a>
+
+    <section class="home">
+        <div class="home-text">
+            <h3><span>#</span> poverty eradication</h3>
+            <h1>stop <span>poverty</span></h1>
+            <h1>together we can</h1>
+            <button type="button">donate</button>
+        </div>
+        <div class="home-img">
+            <img
+                src="static/img/bill-wegener-7MD4DR9jbP0-unsplash.jpg"
+                alt="">
+        </div>
+    </section>
+    <!-- End of Home Section -->
+
+    <!-- Articles -->
+    <section class="menu">
+        <div class="heading">
+            <h1>The<span>Articles</span></h1>
+            <h2>Share your Story With Us.Help save a Human</h2>
+        </div>
+    </section>
+
     {% for article in articles %}
     <h2>{{article.title}}</h2>
     <img src="{{article.image.url}}" alt="">
@@ -25,12 +49,4 @@
         </div>
         <button type="submit" class="btn btn-primary">Submit</button>
       </form>
-
-    <p><span style="color:green;">#POVERTY ERADICATION</span></p>
-    <h1>STOP<span style="color: green;">POVERTY</span><br>TOGETHER WE CAN.</h1>
-    <a router-Link="services">Donate<i class="bi bi-arrow-right"></i></a> <br><br>
-    <img src="../../static/img/hanna-morris-3EkT6xb4K9w-unsplash.jpg">
-    <img src="../../static/img/ian-macharia-gogGhbvHrYw-unsplash.jpg">
-    <img src="../../static/img/ninno-jackjr-CG6Gd__QIOY-unsplash.jpg"> <br><br>
-
 {%endblock%}
