@@ -9,14 +9,13 @@
     list-style: none;
     text-decoration: none;
     background-color: #FDFFA9;
-    overflow: hidden;
 }
 section{
     padding: 50px 3%;
   }
 /* Navbar */
 header{
-    
+    position: fixed;
     width: 100%;
     display: flex; 
     justify-content: flex-start;
@@ -55,10 +54,11 @@ header li a{
 
 .home{
     width: 100%;
-    height: auto;
+    height: 100vh;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 1.5rem;
+    align-items: center;
+    gap: 1rem;
 }
 .home-text{
     text-transform: uppercase;
@@ -95,6 +95,7 @@ header li a{
     color: #00C897;
 }
 .home-text button{
+    display: inline-block;
     width: 245px;
     height: 65px;
     border-radius: 8px;
@@ -116,6 +117,8 @@ header li a{
   width: 85%;
   border-radius: 8px;
 }
+
+/* About Us Section */
 
 /* Login */
 .box-form{
