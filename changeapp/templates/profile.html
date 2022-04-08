@@ -10,21 +10,24 @@
             <div class="mt-3">
                  <span class="d-block h-100 w-100">
                      {% if user.avatar %}
-                     <img src="{{user.avatar.url}}" class="img-fluid" alt="">
+                     <img src="{{profile.avatar.url}}" class="img-fluid" alt="">
                      {% else %}
-                     <img src="{{user.user_avatar}}" class="img-fluid" alt="">
+                     <img src="{{profile.user_avatar}}" class="img-fluid" alt="">
                      {% endif %}
 
                  </span>
-                    <h4>{{user.full_name}}</h4>
-                    <p>@{{user.username}}</p>
-                    <p>Email: {{user.email}}</p>
-                    <p>Joined on: {{user.date_joined|date}}</p>
-                    <a href="{% url 'login' %}" class="nav-link">Logout</a>
+                    <h4>{{profile.full_name}}</h4>
+                    <p>@{{profile.username}}</p>
+                    <p>Email: {{profile.email}}</p>
+                    <p>Joined on: {{profile.date_joined|date}}</p>
             </div>
      </div>
     <div>
+        {% if user == profile %}
         <div>
+           
+            <a href="{% url 'login' %}" class="nav-link">Logout</a>
+
             <form action="{% url 'update_profile' %}" method="post" enctype="multipart/form-data">
                 {% csrf_token %}
                 <div class="form-group">
@@ -64,11 +67,14 @@
             </div>
         </div>
     </div>
+    {% endif %}
     {% for article in articles %}
     <h2>{{article.title}}</h2>
     <img src="{{article.image.url}}" alt="">
-    <a href="{% url 'delete_article' article.id %}" class="btn-md btn-outline-danger">Delete</a>
     <p>{{article.post| safe}}</p>
+    {% if user == article.author %}
+    <a href="{% url 'delete_article' article.id %}" class="btn-md btn-outline-danger">Delete</a>
     <a href="{% url 'update_article' article.id %}" class="btn-md-btn-primary">Update</a>
+    {% endif %}
     {% endfor %}
 {%endblock%}
