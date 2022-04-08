@@ -45,7 +45,7 @@ def loginPage(request):
         
         if user is not None:
             login(request, user)
-            return redirect('main')
+            return redirect('index')
         else:
             messages.info(request, 'Email or password is incorrect')
             
@@ -102,7 +102,7 @@ def article(request):
             article = form.save(commit =False)
             article.author = current_user
             article.save()
-        return redirect('main')
+        return redirect('index')
 
     else:
         form = ArticlesForm()
@@ -183,7 +183,7 @@ def lipa_na_mpesa_online(request):
     }
     print(amount)
     response = requests.post(api_url, json=request, headers=headers)
-    return redirect('main')
+    return redirect('index')
 
 
 @csrf_exempt
