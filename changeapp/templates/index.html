@@ -9,23 +9,152 @@
             <h3><span>#</span> poverty eradication</h3>
             <h1>stop <span>poverty</span></h1>
             <h1>together we can</h1>
-            <button type="button">donate</button>
+            <button type="button" class="button" data-bs-toggle="modal" data-bs-target="#largeModal">donate</button>
+            <!-- Modal -->
+            <div class="modal fade" id="largeModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal-dialog modal-md">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Make it easy to donate</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                        <!-- Donation form -->
+                      <form action="{% url 'lipa_na_mpesa' %}">
+                          <div class="mb-3">
+                            <label for="Name" class="form-label">Name</label>
+                            <input type="text" class="form-control" placeholder="Name">
+                          </div>
+                          <div class="mb-3">
+                              <label for="Amount" class="form-label">Amount</label>
+                              <input type="number" class="form-control"  name="amount" placeholder="Enter amount to donate">
+                            </div>
+                          <div class="mb-3">
+                            <label for="Phone number" class="form-label">Phone number</label>
+                            <input type="number" class="form-control"  name="phone_number" placeholder="Enter phone number in fromat 254712345678">
+                          </div>
+                          <button type="submit" class="btn btn-primary">Submit</button>
+                      </form>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                  </div>
+                </div>
+              </div>
+            </div>
         </div>
-        <div class="home-img">
-            <img
-                src="static/img/bill-wegener-7MD4DR9jbP0-unsplash.jpg"
-                alt="">
-        </div>
+
+
+          <div class="home-img">
+              <img
+                  src="static/img/bill-wegener-7MD4DR9jbP0-unsplash.jpg"
+                  alt="">
+          </div>
     </section>
     <!-- End of Home Section -->
 
     <!-- Articles -->
-    <section class="menu">
+    <section class="article">
         <div class="heading">
-            <h1>The<span>Articles</span></h1>
+            <h1>The <span>Articles</span></h1>
             <h2>Share your Story With Us.Help save a Human</h2>
         </div>
+        <div class="article-container">
+          <div class="card">
+            <div class="card-img">
+              <img
+                src="static/img/tai-s-captures-Lhb-zwQ-QGI-unsplash.jpg"
+                alt="">
+            </div>
+            <h2>Health</h2>
+            <button type="button">View article</button>
+          </div>
+
+          <div class="card">
+            <div class="card-img">
+              <img
+                src="static/img/emmanuel-ikwuegbu-M-4lFg1Xfag-unsplash.jpg"
+                alt="">
+            </div>
+            <h2>Education</h2>
+            <button type="button">View article</button>
+          </div>
+
+          <div class="card">
+            <div class="card-img">
+              <img
+                src="static/img/jordan-opel-3VLHF9b9Plg-unsplash.jpg"
+                alt="">
+            </div>
+            <h2>Sanitation</h2>
+            <button type="button">View article</button>
+          </div>
+
+        </div>
     </section>
+<!-- About Us Section -->
+    <section class="about">
+      <div class="about-img">
+        <img
+            src="static/img/joshua-oluwagbemiga-Jq0coU4cdFE-unsplash.jpg"
+            alt="">
+      </div>
+      <div class="about-text">
+        <h1>About <span>Us</span></h1>
+        <blockquote>“You must not lose faith in humanity. Humanity is an ocean; if a few drops of the ocean are dirty, the ocean does not become dirty.”
+          <br>
+            <cite>--Mahatma Gandhi</cite>
+        </blockquote>
+        <p>Our Mission is to make the world a better place with the tools and skills we have.
+          As Part of the Developers community we create platforms to spread awareness to the
+          world as we believe in living in a diverse world full of opportunity with shared 
+          resources to make this world feel more than home to every individula out there.
+        </p>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact">
+
+      <div class="contact-box">
+        <h3>ChangeTime</h3>
+        <span>Connect with Us</span>
+        <div class="social">
+            <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+        </div>
+      </div>
+        <div class="contact-box">
+          <h3>Menu Links</h3>
+          <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#menu">Menu</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </div>
+        <div class="contact-box">
+          <h3>Quick Links</h3>
+          <li><a href="#Contact">Contact</a></li>
+          <li><a href="#Privacy">Privacy</a></li>
+          <li><a href="#Disclaimer">Disclaimer</a></li>
+          <li><a href="#Terms of use">Terms of use</a></li>
+        </div>
+          <div class="contact-box address">
+            <h3>Contact</h3>
+            <i class="fas fa-map-pin"><span>6802 Street Nairobi, Kenya</span></i>
+            <i class="fas fa-phone"><span>+254 711 600 131</span></i>
+            <i class="fas fa-envelope"><span>ChangeTime@moringaschool.com</span></i>
+          </div>
+    </section>
+
+    <!-- Copyright -->
+    <div class="copyright">
+      <p>  Copyright © 2022 All Rights Reserved by ChangeTime.</p>
+    </div>
+
+
+
 
     {% for article in articles %}
     <h2>{{article.title}}</h2>
@@ -33,20 +162,4 @@
     <a href="{% url 'single_article' article.id %}">View article</a>
     {% endfor %}
 
-    <!-- Donation form -->
-    <form action="{% url 'lipa_na_mpesa' %}">
-        <div class="mb-3">
-          <label for="Name" class="form-label">Name</label>
-          <input type="text" class="form-control" placeholder="Name">
-        </div>
-        <div class="mb-3">
-            <label for="Amount" class="form-label">Amount</label>
-            <input type="number" class="form-control"  name="amount" placeholder="Enter amount to donate">
-          </div>
-        <div class="mb-3">
-          <label for="Phone number" class="form-label">Phone number</label>
-          <input type="number" class="form-control"  name="phone_number" placeholder="Enter phone number in fromat 254712345678">
-        </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
-      </form>
 {%endblock%}
