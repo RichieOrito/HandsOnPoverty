@@ -107,7 +107,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'moringa',
         'USER': 'postgres',
-        'PASSWORD':'xoxo',
+        'PASSWORD':'12345',
         'HOST': 'localhost', 
     }
 }
