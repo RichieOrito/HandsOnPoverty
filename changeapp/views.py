@@ -73,9 +73,9 @@ def welcome(request):
 #Profile view
 def profile(request, username):
     form = ProfileForm
-    current_user = request.user
-    articles = Articles.objects.filter(author = current_user).all()
     profile =  User.objects.filter(username = username).first()
+    articles = Articles.objects.filter(author = profile).all()
+
     context = {
          "profile": profile, "form":form, "articles":articles
     }
@@ -156,8 +156,6 @@ def add_comment(request, id):
 
     else:
         form = CommentsForm()
-
-
 
 def lipa_na_mpesa_online(request):
     access_token = MpesaAccessToken.validated_mpesa_access_token

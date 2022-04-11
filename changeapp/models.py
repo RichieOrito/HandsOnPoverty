@@ -99,6 +99,12 @@ class Articles(models.Model):
     def get_all_posts(cls):
         return cls.objects.all()
 
+    
+    @classmethod
+    def search_by_title(cls, title):
+        article = Articles.objects.filter(title__icontains = title).first()
+        return article 
+
     def __str__(self):
         return self.title
 
