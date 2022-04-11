@@ -105,10 +105,9 @@ WSGI_APPLICATION = 'changetime.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'moringa',
-        'USER': 'postgres',
-        'PASSWORD':'xoxo',
-        'HOST': 'localhost', 
+        'NAME': 'changetime',
+        'USER': 'moringa',
+        'PASSWORD':'R0707318659@!',
     }
 }
 
@@ -142,7 +141,7 @@ AUTHENTICATION_BACKENDS = (
  )
 
 SITE_ID = 2
-LOGIN_REDIRECT_URL = 'main'
+LOGIN_REDIRECT_URL = 'index'
 SOCIALACCOUNT_QUERY_EMAIL = True
 ACCOUNT_LOGOUT_ON_GET= True
 ACCOUNT_UNIQUE_EMAIL = True
