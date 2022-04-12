@@ -67,7 +67,7 @@
                 alt="">
             </div>
             <h2>Health</h2>
-            <button type="button">View article</button>
+            <a href="{% url 'heath_articles' %}">View articles</a>
           </div>
 
           <div class="card">
@@ -77,7 +77,7 @@
                 alt="">
             </div>
             <h2>Education</h2>
-            <button type="button">View article</button>
+            <a href="{% url 'education_articles' %}">View articles</a>
           </div>
 
           <div class="card">
@@ -87,7 +87,7 @@
                 alt="">
             </div>
             <h2>Sanitation</h2>
-            <button type="button">View article</button>
+            <a href="{% url 'water_articles' %}">View articles</a>
           </div>
 
         </div>
@@ -161,6 +161,7 @@
     <img src="{{article.image.url}}" alt="">
     <a href="{% url 'single_article' article.id %}">View article</a>
     <a href="{% url 'profile' article.author.username %}">{{article.author.username}}</a>
+    <p>{{article.category}}</p>
     {% endfor %}
 
 {%endblock%}
