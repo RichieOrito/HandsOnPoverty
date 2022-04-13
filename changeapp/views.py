@@ -10,6 +10,9 @@ from django.http import HttpResponse, JsonResponse
 from django.shortcuts import render
 import requests
 from requests.auth import HTTPBasicAuth
+from rest_framework import viewsets
+from .serializers import ArticlesSerializer
+from .models import Articles
 import json
 from . mpesa_credentials import MpesaAccessToken, LipanaMpesaPpassword
 from django.views.decorators.csrf import csrf_exempt
@@ -241,4 +244,7 @@ def confirmation(request):
 
     return JsonResponse(dict(context))
 
+class ArticlesViewSet(viewsets.ModelViewSet):
+    queryset = Articles.objects.all().order_by('author')
+    serializer_class = ArticlesSerializer
     
