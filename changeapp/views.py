@@ -165,7 +165,7 @@ def health_articles(request):
 
 @login_required 
 def education_articles(request):
-    articles = Articles.objects.filter(category = 3).all()
+    articles = Articles.objects.filter(category = 2).all()
     return render(request, 'articles/education.html', {"articles":articles})
 
 @login_required 
