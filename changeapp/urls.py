@@ -6,14 +6,12 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib.staticfiles.storage import staticfiles_storage
 
-router = routers.DefaultRouter()
-router.register(r'authors',views.ArticlesViewSet)
+
 
 
 
 urlpatterns = [
     path('',views.welcome, name="index"),
-    path('api-auth/',include('rest_framework.urls', namespace='rest_framework')),
     path('register/', views.registerPage, name="register"),
     path('login/', views.loginPage, name="login"),
     path('logout/', views.logoutUser, name="logout"),
