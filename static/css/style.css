@@ -9,9 +9,10 @@
     list-style: none;
     text-decoration: none;
     background-color: #FDFFA9;
+    scroll-behavior: smooth;
 }
 section{
-    padding: 50px 3%;
+    padding: 40px 3%;
   }
 /* Navbar */
 header{
@@ -77,6 +78,7 @@ header li a{
 }
 .home-text h3 span{
     font-size: 40px;
+    color: #00C897;
 }
 .home-text h1{
     color: #000;
@@ -94,7 +96,7 @@ header li a{
 .home-text h1 span{
     color: #00C897;
 }
-.home-text button{
+.home-text .button{
     display: inline-block;
     width: 245px;
     height: 65px;
@@ -106,6 +108,22 @@ header li a{
     font-weight: 500;
     transition: all 1.4s ease 0s;
 }
+.modal{
+    background-repeat: no-repeat;
+    background-image: url('/static/img/ninno-jackjr-CG6Gd__QIOY-unsplash.jpg');
+    background-size: cover;
+    background-position: center;
+}
+.home-text .modal .modal-dialog .modal-content .modal-header .btn-close{
+    color: #1A202C;
+}
+.home-text .modal .modal-dialog .modal-content .btn-primary{
+    background-color: #019267;
+    border: none;
+}
+.home-text .modal .modal-dialog .modal-content .btn-primary:hover{
+    background-color: #00C897;
+}
 .home-text button:hover{
     background-color: #00C897;
 }
@@ -116,9 +134,144 @@ header li a{
 .home-img img{
   width: 85%;
   border-radius: 8px;
+  transition: 1.4s ease 0s;
+}
+.home-img img:hover{
+    transform: scale(1.2);
+}
+
+/* Articles Section */
+.article .heading{
+    text-align: center;
+}
+.article-container{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, auto));
+    gap: 1.5rem;
+    align-items: center;
+}
+.heading h1{
+    color: rgba(0, 0, 0, 0.8);
+    font-weight: 500;
+    margin-bottom: 15px;
+}
+.heading h2{
+    color: rgba(0, 0, 0, 0.8);
+    margin-bottom: 30px;
+}
+.heading span{
+    color: #00C897;
+    font-weight: 600;
+}
+.card{
+    position: relative;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px;
+    background-color: #FDFFA9;
+}
+.card-img{
+    width: 100%;
+}
+.card-img img{
+    width: 100%;
+    object-fit: contain;
+    object-position: center;
+    border-radius: 8px 8px 0 0;
+}
+.card h2{
+    color: rgba(0, 0, 0, 0.8);
+    margin-top: 18px;
+}
+.card button{
+    border: none;
+    background-color: #019267;
+    border-radius: 6px;
+    color: #FFFFFF;
+    width: 100px;
+    height: 40px;
+    font-weight: 500;
+    margin-top: 10px;
 }
 
 /* About Us Section */
+.about{
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    gap: 1.5rem;
+    align-items: center;
+}
+.about-text h1{
+    color: #00C897;
+    text-align: center;
+    margin-bottom: 25px;
+}
+.about-text span{
+    color: rgba(0, 0, 0, 0.8);
+}
+.about blockquote{
+    text-align: center;
+    color: #1A202C;
+    font-size: 25px;
+}
+.about cite{
+    color: #00C897;
+}
+.about p{
+    color: #1A202C;
+    font-size: 25px;
+}
+.about-img img{
+    width: 70%;
+    border: 6px solid #00C897;
+}
+
+/* Contact Section */
+.contact{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, auto));
+    gap: 1.5rem;
+}
+.contact-box h3{
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+    color: #00C897;
+}
+.social{
+    display: flex;
+    margin-top: 1.5rem;
+}
+.social i{
+    font-size: 20px;
+    margin-right: 1rem;
+    color: #00C897;
+}
+.social i:hover {
+    color: #019267;
+}
+.contact-box li a{
+    color: #1A202C;
+    text-decoration: none;
+}
+.contact li a:hover{
+    color:#019267;
+}
+.address {
+    display: flex;
+    flex-direction: column;
+}
+.address i,span{
+    color: #1A202C;
+}  
+.address span {
+    margin-left: 1rem;
+}  
+.copyright {
+    text-align: center;
+}
 
 /* Login */
 .box-form{

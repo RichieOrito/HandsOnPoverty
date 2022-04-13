@@ -105,7 +105,7 @@ WSGI_APPLICATION = 'changetime.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'moringa',
+        'NAME': '',
         'USER': 'postgres',
         'PASSWORD':'12345',
         'HOST': 'localhost', 
