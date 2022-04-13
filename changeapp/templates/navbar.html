@@ -7,7 +7,20 @@
             <li><a href="#about">About Us</a></li>
             <li><a href="#contact">Contact</a></li>
         </ul>
-            <li><i class='bx bx-search'></i></li>
+
+        <li>
+        <form action="" class="search-form" role="search" autocomplete="off">
+            <div class="input">
+                <input type="text" name="search" placeholder="Health, Education, Sanitation" id="search">
+            </div>
+            <div class="submit">
+                <button type="submit">
+                    <i class='bx bx-search'></i>
+                </button>
+            </div>
+        </form>
+        </li>
+       
             <li><a href="{% url 'profile'  user.username %}"><i class='bx bxs-user'></i></a></li>
 </header>
 
