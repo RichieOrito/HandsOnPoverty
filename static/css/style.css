@@ -48,6 +48,35 @@ header li{
 header li a{
     color: #00C897;
 }
+header li form{
+    display: flex;
+}
+header li form .input{
+    width: 220px;
+}
+header li form .input ::placeholder{
+    color: grey;
+}
+header li form .input input{
+    width: 100%;
+    padding: 6px 10px;
+    border-radius: 0;
+    border: none;
+    outline: 2px solid #00C897;
+}
+header li form .submit button{
+    padding: 6px 10px;
+    background-color: #019267;
+    color: #00C897;
+    border: none;
+    outline: 2px solid #019267;
+}
+header li form .submit button i{
+    font-weight: 900;
+    font-size: medium;
+    background-color: #019267;
+    color: #FFFFFF;
+}
 /* End of Navbar */
 
 
