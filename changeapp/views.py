@@ -1,3 +1,4 @@
+from unicodedata import category
 from xml.etree.ElementTree import Comment
 from django.shortcuts import render, redirect
 from django.contrib.auth.forms import UserCreationForm
@@ -156,6 +157,21 @@ def add_comment(request, id):
 
     else:
         form = CommentsForm()
+
+@login_required 
+def health_articles(request):
+    articles = Articles.objects.filter(category = 1).all()
+    return render(request, 'articles/health.html', {"articles":articles})
+
+@login_required 
+def education_articles(request):
+    articles = Articles.objects.filter(category = 3).all()
+    return render(request, 'articles/education.html', {"articles":articles})
+
+@login_required 
+def water_articles(request):
+    articles = Articles.objects.filter(category = 3).all()
+    return render(request, 'articles/sanitation.html', {"articles":articles})
 
 def lipa_na_mpesa_online(request):
     access_token = MpesaAccessToken.validated_mpesa_access_token

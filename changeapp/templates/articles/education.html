@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% load bootstrap5 %}
+{% load static %}
+
+{% block content %}
+    {% for article in articles %}
+    <h2>{{article.title}}</h2>
+    <img src="{{article.image.url}}" alt="">
+    <a href="{% url 'single_article' article.id %}">View article</a>
+    <a href="{% url 'profile' article.author.username %}">{{article.author.username}}</a>
+    <p>{{article.date_posted}}</p>
+    <a href="{% url 'single_article' article.id %}">View article</a>
+
+    {% endfor %}
+
+{%endblock%}
