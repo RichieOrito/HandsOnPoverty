@@ -57,6 +57,11 @@ INSTALLED_APPS = [
     'django_social_share',
 ]
 
+REST_FRAMEWORK = {
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
+    'PAGE_SIZE': 10
+}
+
 SOCIALACCOUNT_PROVIDERS = {
     'google': {
         'SCOPE': [

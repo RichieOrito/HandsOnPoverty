@@ -11,6 +11,9 @@ from django.http import HttpResponse, JsonResponse
 from django.shortcuts import render
 import requests
 from requests.auth import HTTPBasicAuth
+from rest_framework import viewsets
+from rest_framework import permissions
+from .serializers import ArticlesSerializer
 import json
 from . mpesa_credentials import MpesaAccessToken, LipanaMpesaPpassword
 from django.views.decorators.csrf import csrf_exempt
@@ -71,7 +74,18 @@ def welcome(request):
 
     return render(request, 'index.html', {'articles':articles} )
 
+
+#serializer code 
+
+class ArticleViewSet(viewsets.ModelViewSet):
+    """
+    API endpoint that allows users to be viewed or edited.
+    """
+    queryset = User.objects.all().order_by('-date_joined')
+    serializer_class = ArticlesSerializer
+    permission_classes = [permissions.IsAuthenticated]
 #Profile view
+
 def profile(request, username):
     form = ProfileForm
     profile =  User.objects.filter(username = username).first()
