@@ -1,3 +1,4 @@
+{% load bootstrap5 %}
 {% load static %}
 
 <header>
@@ -9,18 +10,29 @@
         </ul>
 
         <li>
-        <form action="" class="search-form" role="search" autocomplete="off">
-            <div class="input">
-                <input type="text" name="search" placeholder="Health, Education, Sanitation" id="search">
-            </div>
-            <div class="submit">
-                <button type="submit">
-                    <i class='bx bx-search'></i>
-                </button>
-            </div>
-        </form>
+            <form action="" class="search-form" role="search" autocomplete="off">
+                <div class="input">
+                    <input type="text" name="search" placeholder="Health, Education, Sanitation" id="search">
+                </div>
+                <div class="submit">
+                    <button type="submit">
+                        <i class='bx bx-search'></i>
+                    </button>
+                </div>
+            </form>
         </li>
-       
-            <li><a href="{% url 'profile'  user.username %}"><i class='bx bxs-user'></i></a></li>
+        <li>
+        <div class="dropdown">
+                <a class="dropdown-toggle"  id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                <i class='bx bxs-user'></i>
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                    <li><a class="dropdown-item" href="{% url 'profile'  user.username %}">🤵 Profile</a></li>
+                    <li><a class="dropdown-item" href="#">My Articles</a></li>
+                    <li><a class="dropdown-item" href="{% url 'newArticle' %}">New Article</a></li>
+                    <li><a class="dropdown-item" href="{% url 'login' %}">LogOut</a></li>
+                </ul>
+        </div>
+        </li>
 </header>
 
