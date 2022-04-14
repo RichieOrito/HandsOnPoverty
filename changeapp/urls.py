@@ -1,9 +1,14 @@
 from unicodedata import name
-from django.urls import path
+from django.urls import path,include
+from rest_framework import routers
 from . import views
 from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib.staticfiles.storage import staticfiles_storage
+
+
+
+
 
 urlpatterns = [
     path('',views.welcome, name="index"),
