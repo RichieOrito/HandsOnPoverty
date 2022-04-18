@@ -50,11 +50,17 @@ INSTALLED_APPS = [
     'bootstrap5',
     'django.contrib.sites',
     'allauth',
+    'rest_framework',
     'allauth.account',
     'allauth.socialaccount', 
     'allauth.socialaccount.providers.google', #for google auth
     'django_social_share',
 ]
+
+REST_FRAMEWORK = {
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
+    'PAGE_SIZE': 10
+}
 
 SOCIALACCOUNT_PROVIDERS = {
     'google': {
