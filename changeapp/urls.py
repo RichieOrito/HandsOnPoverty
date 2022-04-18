@@ -20,6 +20,7 @@ urlpatterns = [
     path('articles/water', views.water_articles, name = 'water_articles'),
     path('articles/education', views.education_articles, name = 'education_articles'),
     path('article/comment/<int:id>', views.add_comment, name='add_comment'),
+    path('search/', views.search_results, name = 'search'),
     path('online/lipa', views.lipa_na_mpesa_online, name='lipa_na_mpesa'),
     # register, confirmation, validation and callback urls
     path('c2b/register', views.register_urls, name="register_mpesa_validation"),
