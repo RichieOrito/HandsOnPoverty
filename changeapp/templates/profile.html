@@ -26,7 +26,7 @@
         {% if user == profile %}
         <div>
            
-            <a href="{% url 'login' %}" class="nav-link">Logout</a>
+            <a href="{% url 'logout' %}" class="nav-link">Logout</a>
 
             <form action="{% url 'update_profile' %}" method="post" enctype="multipart/form-data">
                 {% csrf_token %}

@@ -23,8 +23,9 @@ urlpatterns = [
     path('article/<int:id>', views.single_article, name = 'single_article'),
     path('articles/health', views.health_articles, name = 'heath_articles'),
     path('articles/water', views.water_articles, name = 'water_articles'),
-    path('articles/water', views.education_articles, name = 'education_articles'),
+    path('articles/education', views.education_articles, name = 'education_articles'),
     path('article/comment/<int:id>', views.add_comment, name='add_comment'),
+    path('search/', views.search_results, name = 'search'),
     path('online/lipa', views.lipa_na_mpesa_online, name='lipa_na_mpesa'),
     # register, confirmation, validation and callback urls
     path('c2b/register', views.register_urls, name="register_mpesa_validation"),
