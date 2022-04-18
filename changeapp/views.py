@@ -83,8 +83,8 @@ class ArticleViewSet(viewsets.ModelViewSet):
     queryset = User.objects.all().order_by('-date_joined')
     serializer_class = ArticlesSerializer
     permission_classes = [permissions.IsAuthenticated]
+    
 #Profile view
-
 def profile(request, username):
     form = ProfileForm
     profile =  User.objects.filter(username = username).first()
