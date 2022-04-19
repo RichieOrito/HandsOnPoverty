@@ -24,7 +24,6 @@
             </div>
      </div>
     <div>
-        {% if user == profile %}
         <div>
            
             <a href="{% url 'logout' %}" class="nav-link">Logout</a>
@@ -127,22 +126,29 @@
                         </ul>
                     </div>
                 </div>
-            
+                {% if user == profile %}
                 <div class="btn btn-outline-primary my-4 rounded-0 text-uppercase" data-bs-toggle="modal"
                     data-bs-target="#updateProfileModal">Edit Profile
                 </div>  
+                {% endif %}
+            </div>
+            <div class="container">
+                <div class="row">
+                    {% for article in articles %}
+                    <div class="col-md-8">
+                        <div class="card" style="width: 100%; margin: auto;">
+                            <img src="{{article.image.url}}" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <p>{{article.post| safe}}</p>   
+                                {% if user == article.author %}
+                                <a href="{% url 'delete_article' article.id %}" class="btn btn-md btn-outline-danger">Delete</a>
+                                <a href="{% url 'single_article' article.id %}" class="btn btn-md btn-outline-primary" >View</a>
+                                {% endif %}                   
+                            </div>
+                          </div>
+                          {% endfor %}
+                    </div>
+                </div>
             </div>
         </section>
-        <!-- <a href="{% url 'newArticle' %}">Add Article</a>
-
-    {% endif %}
-    {% for article in articles %}
-    <h2>{{article.title}}</h2>
-    <img src="{{article.image.url}}" alt="">
-    <p>{{article.post| safe}}</p>
-    {% if user == article.author %}
-    <a href="{% url 'delete_article' article.id %}" class="btn-md btn-outline-danger">Delete</a>
-    <a href="{% url 'update_article' article.id %}" class="btn-md-btn-primary">Update</a>
-    {% endif %} -->
-    <!-- {% endfor %} -->
 {%endblock%}

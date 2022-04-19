@@ -192,7 +192,7 @@ def search_results(request):
 
     else:
         message = "You haven't searched for any term"
-        return render(request, 'all-news/search.html',{"message":message})
+        return render(request, 'articles/search.html',{"message":message})
 
 @login_required(login_url='login')
 def lipa_na_mpesa_online(request):

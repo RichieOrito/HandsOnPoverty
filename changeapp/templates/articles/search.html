@@ -1,25 +1,47 @@
 {%extends 'base.html'%} 
 {% block content %}
-<div class="container">
 
-  <div class="row">
+  <!-- <div class="row">
     {% if articles%}
       <h2>Found {{ articles|length }} of searched term {{message}}</h2>
     {% else %}
       <h2> Found 0 articles for the search term {{message}}</h2>
     {% endif %}
 
-  </div>
+  </div> -->
 
-  <div class="row">
 
   {% if articles %}
-      <div class="col-sm-6 col-md-3">
-          <h1>{{articles.title}}</a></h1>
-          <p>{{articles.post| safe}}</p>
-          <img src="{{articles.image.url}}" alt="">
+  {% for article in articles %}
+  <section class="cards-articles">
+      
+      <div class="article-post">
+          
+          <div class="article-post_img">
+              <img src="{{article.image.url}}" alt="">
+          </div>
+          <div class="article-post_info">
+              <div class="article-post_date">
+                  <p>{{article.date_posted}}</p>
+              </div>
+  
+              <h3>Article By : <a style="text-decoration: none;" href="{%  url 'profile' article.author.username %}"><span>{{article.author.username}}</span></a></h3>
+  
+                  <h1 class="article-post_title">
+                      {{article.title}}
+                  </h1>
+                  <p class="article-post_text">
+                  {{article.post| safe}}
+                  </p>
+  
+              <a href="{% url 'single_article' article.id %}" class="article-post_link">Comment and Share Article</a>
+          </div>
       </div>
+      
+  </section>
+  {% endfor %}
+  {% else %}
+  <h2> Found 0 articles for the search term {{message}}</h2>
   {% endif %}
-  </div>
-</div>
+
 {% endblock %}
