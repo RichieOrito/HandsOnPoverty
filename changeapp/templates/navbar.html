@@ -11,9 +11,9 @@
 
         <li>
 
-            <form action="" class="search-form" role="search" autocomplete="off">
+            <form action="{% url 'search' %}" class="search-form" role="search" autocomplete="off">
                 <div class="input">
-                    <input type="text" name="search" placeholder="Health, Education, Sanitation" id="search">
+                    <input type="text" name="article" placeholder="Health, Education, Sanitation" id="search">
                 </div>
                 <div class="submit">
                     <button type="submit">
@@ -27,14 +27,21 @@
                 <a class="dropdown-toggle"  id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
                 <i class='bx bxs-user'></i>
                 </a>
+                {% if user.is_authenticated %}
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                    {% if user.is_authenticated %}
+                   
                     <li><a class="dropdown-item" href="{% url 'profile'  user.username %}">🤵 Profile</a></li>
-                    {% endif %}
                     <li><a class="dropdown-item" href="#">My Articles</a></li>
                     <li><a class="dropdown-item" href="{% url 'newArticle' %}">New Article</a></li>
                     <li><a class="dropdown-item" href="{% url 'login' %}">LogOut</a></li>
                 </ul>
+                {% else %}  
+
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                    <li><a class="dropdown-item" href="{% url 'login' %}">Login</a></li>
+                </ul>
+
+                {% endif %}
         </div>
         </li>
 </header>

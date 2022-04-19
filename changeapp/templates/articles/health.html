@@ -3,9 +3,11 @@
 {% load static %}
 
 {% block content %}
+{% for article in articles %}
 <section class="cards-articles">
+    
     <div class="article-post">
-        {% for article in articles %}
+        
         <div class="article-post_img">
             <img src="{{article.image.url}}" alt="">
         </div>
@@ -14,7 +16,7 @@
                 <p>{{article.date_posted}}</p>
             </div>
 
-                <h3>Article By : <span>{{article.author.username}}</span></h3>
+            <h3>Article By : <a style="text-decoration: none;" href="{%  url 'profile' article.author.username %}"><span>{{article.author.username}}</span></a></h3>
 
                 <h1 class="article-post_title">
                     {{article.title}}
@@ -26,8 +28,7 @@
             <a href="{% url 'single_article' article.id %}" class="article-post_link">Comment and Share Article</a>
         </div>
     </div>
+    
 </section>
-
-    {% endfor %}
-
+{% endfor %}
 {%endblock%}
