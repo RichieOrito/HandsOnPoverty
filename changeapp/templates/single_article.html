@@ -3,15 +3,25 @@
 {% block content %}
 {% load social_share %}
 
-<div>
+<div class="comment-area">
     <h1>{{article.title}}</h1>
     <p>{{article.post| safe}}</p>
     <img src="{{article.image.url}}" alt="">
+    <div class="whatsapp">
     {% post_to_whatsapp object_or_url "Share via WhatsApp" %}
+    </div>
+    <div class="facebook">
     {% post_to_facebook object_or_url "Post to Facebook!" %}
+    </div>
+    <div class="twitter">
     {% post_to_twitter "New Article: {{object.title}}. Check it out!" object_or_url "Post to Twitter" %}
+    </div>
+    <div class="google">
     {% post_to_gplus object_or_url "Post to Google+!" %}
+    </div>
+    <div class="linkedin">
     {% post_to_linkedin object_or_url %}
+    </div>
     <h2>Comments</h2>
     {% for comment in comments %}
     <p>{{comment.comment}}</p>
