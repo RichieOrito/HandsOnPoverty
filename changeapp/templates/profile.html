@@ -1,7 +1,8 @@
 {% extends 'base.html' %}
 {% load bootstrap5 %}
+{% load static %}
 {% block content %}
-    <div class="container">
+    <!-- <div class="container">
        <div>
         <div
         class="position-relative profile-user-pic rounded-circle border d-flex align-items-center justify-content-center">
@@ -66,7 +67,74 @@
 
             </div>
         </div>
-    </div>
+    </div> -->
+    <section class="profile-update">
+        <form action="{% url 'update_profile'%}" method="POST" enctype="multipart/form-data" id="updateProfileForm">
+            <div class="modal fade" id="updateProfileModal" tabindex="-1" aria-labelledby="updateProfileModalLabel"aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title text-uppercase" id="updateProfileModalLabel"> Edit Profile </h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            {% csrf_token %}
+                            <div class="form-group">
+                                <label for="" class="form-label text-sm">Username</label>
+                                    <input type="text" class="form-control" placeholder="{{user.username}}" value="{{user.username}}" name="username" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="" class="form-label text-sm">Full Name</label>
+                                    <input type="text" class="form-control" placeholder="Name please" value="{{user.full_name}}" name="full_name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="" class="form-label text-sm">Contact</label>
+                                <input type="tel" class="form-control" placeholder="+254712345678"
+                                    value="{% if user.contact %}{{user.contact}}{% endif %}" name="contact" required>
+                            </div>
+                            <div class="form-group pt-2">
+                                <label for="" class="form-label text-sm">Bio</label>
+                                <textarea name="bio" class="form-control"
+                                    rows="3">{% if user.bio %}{{user.bio}}{% endif %}</textarea>
+                            </div>
+                            <div class="form-group pt-2">
+                                <input type="file" name="avatar" class="form-control" value="{{user.avatar.url}}">
+                            </div>
+                            <button type="submit" class="btn btn-primary w-100">UPDATE</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+        
+        <div class="container my-5 p-5 content_wrapper">
+        
+            <div class="profile">
+                <div class="d-flex mb-4">
+                    <div class="profile_pic">
+                        {% if profile.avatar %}
+                        <img src="{{profile.avatar.url}}" alt="">
+                        {% else %}
+                        <img src="{%static 'img/default.png'%}" alt="">
+                        {% endif %}
+                    </div>
+                    <div class="details">
+                        <ul>
+                            <li><strong>Full Name:</strong> {{profile.full_name}} </li>
+                            <li><strong>Username:</strong> @{{profile.username}}</li>
+                            <li><strong>Email:</strong><a href="https://mailto:{{profile.email}}"> {{profile.email}}</a></li>
+                            <p>Joined on: {{profile.date_joined|date}}</p>
+                        </ul>
+                    </div>
+                </div>
+            
+                <div class="btn btn-outline-primary my-4 rounded-0 text-uppercase" data-bs-toggle="modal"
+                    data-bs-target="#updateProfileModal">Edit Profile
+                </div>  
+            </div>
+        </section>
+        <a href="{% url 'newArticle' %}">Add Article</a>
+
     {% endif %}
     {% for article in articles %}
     <h2>{{article.title}}</h2>
