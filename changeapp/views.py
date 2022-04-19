@@ -11,6 +11,9 @@ from django.http import HttpResponse, JsonResponse
 from django.shortcuts import render
 import requests
 from requests.auth import HTTPBasicAuth
+from rest_framework import viewsets
+from rest_framework import permissions
+from .serializers import ArticlesSerializer
 import json
 from . mpesa_credentials import MpesaAccessToken, LipanaMpesaPpassword
 from django.views.decorators.csrf import csrf_exempt
@@ -56,9 +59,8 @@ def loginPage(request):
 
 def logoutUser(request):
     logout(request)
-    return redirect('login')
+    return redirect('index')
 
-@login_required(login_url='login')
 def welcome(request):
     articles = Articles.get_all_posts()
     consumer_key = 'tdGGEWWEx8aSG9wphhreUzIienC91AHP'
@@ -71,6 +73,17 @@ def welcome(request):
 
     return render(request, 'index.html', {'articles':articles} )
 
+
+#serializer code 
+
+class ArticleViewSet(viewsets.ModelViewSet):
+    """
+    API endpoint that allows users to be viewed or edited.
+    """
+    queryset = User.objects.all().order_by('-date_joined')
+    serializer_class = ArticlesSerializer
+    permission_classes = [permissions.IsAuthenticated]
+    
 #Profile view
 def profile(request, username):
     form = ProfileForm
@@ -82,7 +95,7 @@ def profile(request, username):
     }
     return render(request, 'profile.html', context)   
     
-@login_required()
+@login_required(login_url='login')
 def update_profile(request):
     if request.method == 'POST':
         form = ProfileForm(request.POST,request.FILES, instance=request.user)
@@ -94,7 +107,7 @@ def update_profile(request):
 
         return redirect(request.META.get('HTTP_REFERER'))
 
-@login_required()
+@login_required(login_url='login')
 def article(request):
     current_user =  request.user
     if request.method == 'POST':
@@ -110,22 +123,19 @@ def article(request):
 
     return render(request, 'new_article.html', {"form": form})  
 
-
-@login_required()
 def single_article(request, id):
     article = Articles.get_post_by_id(id)
     form = CommentsForm
     comments = Comments.objects.filter(article = article).all()
     return render (request, 'single_article.html', {"article":article, "form":form, "comments":comments})
 
-@login_required()
+@login_required(login_url='login')
 def delete_article(request, id):
     article = Articles.objects.filter(pk = id).first()
     article.delete()
     return redirect(request.META.get('HTTP_REFERER'), {'success': 'Article deleted successfully'})
 
-
-@login_required()
+@login_required(login_url='login')
 def update_article(request, id):
     if request.method == 'POST':
         article = Articles.get_post_by_id(id)
@@ -142,7 +152,7 @@ def update_article(request, id):
 
     return redirect(request.META.get('HTTP_REFERER'), {'error': 'There was an error updating'})
 
-@login_required()
+@login_required(login_url='login')
 def add_comment(request, id):
     current_user =  request.user
     article = Articles.get_post_by_id(id)
@@ -158,21 +168,33 @@ def add_comment(request, id):
     else:
         form = CommentsForm()
 
-@login_required 
 def health_articles(request):
     articles = Articles.objects.filter(category = 1).all()
     return render(request, 'articles/health.html', {"articles":articles})
 
-@login_required 
 def education_articles(request):
-    articles = Articles.objects.filter(category = 3).all()
+    articles = Articles.objects.filter(category = 2).all()
     return render(request, 'articles/education.html', {"articles":articles})
 
-@login_required 
 def water_articles(request):
     articles = Articles.objects.filter(category = 3).all()
     return render(request, 'articles/sanitation.html', {"articles":articles})
 
+@login_required(login_url='login')
+def search_results(request):
+
+    if 'article' in request.GET and request.GET["article"]:
+        search_term = request.GET.get("article")
+        results = Articles.search_by_title(search_term)
+        message = f"{search_term}"
+        print(results) 
+        return render(request, 'articles/search.html',{"message":message,"articles": results})
+
+    else:
+        message = "You haven't searched for any term"
+        return render(request, 'all-news/search.html',{"message":message})
+
+@login_required(login_url='login')
 def lipa_na_mpesa_online(request):
     access_token = MpesaAccessToken.validated_mpesa_access_token
     api_url = "https://sandbox.safaricom.co.ke/mpesa/stkpush/v1/processrequest"
@@ -254,5 +276,3 @@ def confirmation(request):
     }
 
     return JsonResponse(dict(context))
-
-    

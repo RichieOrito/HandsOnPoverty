@@ -70,11 +70,12 @@
     </div>
   </div>
   {% endif %}
+  {% if user.is_authenticated %}
   <form action="{% url 'add_comment' article.id %}" method="post" enctype="multipart/form-data">
     {% csrf_token %}
     {% bootstrap_form form %}
     <input type="submit" class="btn btn-success btn-lg" value="Post">
-
+  {% endif %}
 </form>
 </div>
 {%endblock%}
